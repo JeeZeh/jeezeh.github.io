@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 
 const Home = () => {
-  const [salary, setSalary] = useState("");
+  const [salaryInput, setSalary] = useState("");
   const [confirmedSalary, setConfirmedSalary] = useState<number>();
   const [configError, setConfigError] = useState<string | null>(null);
 
-  const validateSalary = () => {
-    let parsed = parseInt(salary);
+  const validateConfig = () => {
+    let parsedSalary = parseInt(salaryInput);
 
-    if (isNaN(parsed)) {
+    if (isNaN(parsedSalary)) {
       setConfigError("Invalid Salary");
-    } else {
-      setConfigError(null);
-      setConfirmedSalary(parsed);
+      return;
     }
+
+    setConfigError(null);
+    setConfirmedSalary(parsedSalary);
   };
 
   return (
@@ -23,9 +24,15 @@ const Home = () => {
         <h3>Your salary is {confirmedSalary} per year!</h3>
       )}
 
-      <input onChange={(e) => setSalary(e.target.value)} value={salary} />
-
-      <button onClick={validateSalary}>Confirm</button>
+      <div>
+        <label form="salary">What's your salary?</label>
+        <input
+          id="salary"
+          onChange={(e) => setSalary(e.target.value)}
+          value={salaryInput}
+        />
+        <button onClick={validateConfig}>Confirm</button>
+      </div>
     </div>
   );
 };

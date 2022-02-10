@@ -45,6 +45,17 @@
 				<p>A script to generate shortcuts with icons for all installed Steam library games</p>
 			</div>
 		</div>
+
+		<div class="project">
+			<img src="autosub.png" alt="YouTube Playlist Autosub Explorer logo" class="img-left" />
+			<div class="description">
+				<h2>YouTube Playlist Autosub Explorer</h2>
+				<p>
+					An app that can be used to archive and fuzzy search an entire YouTube playlist for words,
+					phrases, and sentences.
+				</p>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -53,7 +64,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: left;
 		flex: 1;
 	}
 

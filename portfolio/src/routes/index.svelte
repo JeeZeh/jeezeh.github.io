@@ -2,6 +2,10 @@
 	export const prerender = true;
 </script>
 
+<script lang="ts">
+	import ReactRail from '../components/reactrail/reactrail.svelte';
+</script>
+
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
@@ -26,6 +30,10 @@
 			>.
 		</p>
 	</div>
+
+	<hr />
+
+	<ReactRail />
 
 	<hr />
 

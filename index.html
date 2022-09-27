@@ -1,1 +1,185 @@
-<meta http-equiv="refresh" content="0; URL='http://jeezeh.github.io/webpack'" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jesse Ashmore</title>
+    <meta name="description" content="Hi, my name is Jesse!" />
+    <meta name="theme-color" content="#222222" />
+    <link rel="icon" href="./img/favicon.png" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+
+  <body class="hide">
+    <div id="content" class="">
+      <div id="heading" class="noselect">
+        <p class="title">Jesse Ashmore</p>
+        <p id="heading-sub" class="subtitle" onclick="">&nbsp;</p>
+      </div>
+
+      <nav>
+        <div
+          id="btn-port"
+          class="navitem"
+          onclick="switchTabs(document.querySelector('#ctn-port'));"
+        >
+          portfolio
+        </div>
+        <div
+          id="btn-about"
+          class="navitem selected"
+          onclick="switchTabs(document.querySelector('#ctn-about'));"
+        >
+          about
+        </div>
+      </nav>
+
+      <hr class="splitter" />
+
+      <div id="ctn-about" class="section active">
+        <div id="about">
+          <span id="about-intro" class="center">Hi, my name is Jesse!</span
+          ><br /><br />
+          I have a burning passion for tech, music, languages and all things
+          creative; you can see examples of these in my various portfolios. I
+          enjoy working on
+          <a href="https://github.com/JeeZeh/" target="_blank">
+            various side-projects
+          </a>
+          , such as
+          <a href="https://reactrail.com/?" target="_blank"> React Rail </a>
+          and
+          <a href="https://github.com/JeeZeh/advent-of-code" target="_blank">
+            Advent of Code</a
+          >.
+          <br />
+          <br />
+          I'm a Software Development Engineer II at Amazon Dublin. I work in
+          the
+          <a href="https://www.amazon.jobs/en/landing_pages/icc" target="_blank"
+            >Intelligent Cloud Control organisation</a
+          >
+          @ Amazon Dublin. I work on high-volume data storage solutions and
+          audit automation tools to raise the bar for Amazon services'
+          resiliency and readiness.
+          <br />
+          <span id="interested" class="center"
+            >Check out my
+            <a href="https://www.linkedin.com/in/jesse-ashmore-2597b5130/"
+              >LinkedIn</a
+            > for up-to-date job information and experience.</span
+          >
+
+          <!-- <a
+            href="misc/Jesse_Ashmore_General_Resume.pdf"
+            download="Jesse Ashmore Résumé"
+          >
+            <button id="resume" class="btn btn-portfolio github">
+              Download
+            </button> -->
+          </a>
+        </div>
+      </div>
+
+      <div id="ctn-port" class="section hide fade noselect">
+        <div id="cards">
+          <div id="card-git" class="card">
+            <div class="icon github">github</div>
+            <div class="desc">
+              <div>
+                Read my public developer repositories. These include
+                assignments, personal projects and coding challenges.
+              </div>
+              <div class="ctn-btn">
+                <a href="http://github.com/JeeZeh" target="_blank"
+                  ><button class="btn github btn-portfolio">Read</button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div id="card-bh" class="card">
+            <div class="icon behance">behance</div>
+            <div class="desc">
+              <div>
+                See some of my personal design projects, ranging from branding
+                to graphics, and competitions to design challenges.
+              </div>
+              <div class="ctn-btn">
+                <a href="http://behance.com/JeeZeh" target="_blank"
+                  ><button class="btn behance btn-portfolio">See</button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div id="card-sc" class="card">
+            <div class="icon soundcloud">soundcloud</div>
+            <div class="desc">
+              <div>
+                Listen to some of the songs, some serious and some not so, that
+                I've published over the last few years as a personal hobby.
+              </div>
+              <div class="ctn-btn">
+                <a href="http://soundcloud.com/JeeZeh" target="_blank"
+                  ><button class="btn soundcloud btn-portfolio">
+                    Listen
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div id="card-yt" class="card">
+            <div class="icon youtube">youtube</div>
+            <div class="desc">
+              <div>
+                Watch my personal YouTube videos with content like tutorials,
+                music curation, videogame editing and nonsensical memes.
+              </div>
+              <div class="ctn-btn">
+                <a href="http://youtube.com/c/JeeZeh" target="_blank"
+                  ><button class="btn youtube btn-portfolio">Watch</button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div id="card-fl" class="card">
+            <div class="icon flickr">flickr</div>
+            <div class="desc">
+              <div>
+                Explore some of the photos I've taken over the last few years as
+                a hobbyist photographer.
+              </div>
+              <div class="ctn-btn">
+                <a href="http://flickr.com/JeeZeh" target="_blank"
+                  ><button class="btn flickr btn-portfolio">Explore</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr id="hr-btm" class="splitter bottom" />
+      <svg id="dark-mode" class="noselect" onclick="toggleDark();">
+        <title>Moon Symbol</title>
+        <defs>
+          <style type="text/css">
+            #crescent {
+              fill: none;
+              stroke: #666;
+              stroke-width: 3;
+              stroke-linejoin: round;
+            }
+          </style>
+        </defs>
+        <path
+          id="crescent"
+          d="
+             M 12.5,3.5 
+             a 22.5,22.5 0 0,1 0,43 
+             a 22.5,22.5 0 1,0 0,-43 z"
+        />
+      </svg>
+    </div>
+  </body>
+</html>

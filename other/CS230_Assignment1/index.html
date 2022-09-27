@@ -1,0 +1,147 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="shortcut icon" href="ico.ico" />
+        <title>Student Results</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <script src="main.js"></script>
+
+    </head>
+    <body>
+    <header id="top-bar">
+        <p id="author-text">Jesse Ashmore</p>
+        <p id="title-text">CS230 - Assignment 1</p>
+    </header>
+
+        <table class="table-container" id="table-results" onkeyup="calculateAvg()">
+            <tr class="table-headings">
+                <th class="col1">Name</th>
+                <th class="col2">ID</th>
+                <th class="col3">Assignment 1</th>
+                <th class="col4">Assignment 2</th>
+                <th class="col5">Assignment 3</th>
+                <th class="col6">Assignment 4</th>
+                <th class="col7">Assignment 5</th>
+                <th class="col8">Final Grade</th>
+            </tr>
+            <tr class="table-rows0">
+                <td>Ramon Kirton</td>
+                <td>45681379</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows1">
+                <td>Audrie Whitesell</td>
+                <td>23419721</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows0">
+                <td>Grzegorz Brzęczyszczykiewicz</td>
+                <td>65477351</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows1">
+                <td>Alycia Cromartie</td>
+                <td>31649824</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows0">
+                <td>Lance Ward</td>
+                <td>12378961</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows1">
+                <td>Mitzi Wahl</td>
+                <td>12342782</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows0">
+                <td>Deangelo Lamborn</td>
+                <td>99842373</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows1">
+                <td>Luanne Revilla</td>
+                <td>37655471</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows0">
+                <td>Bradford Latimore</td>
+                <td>16436874</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+            <tr class="table-rows1">
+                <td>Juliana Middlebrooks</td>
+                <td>43729857</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-result"><span class="entry" contenteditable="true" placeholder="-"></span><span class="percent-padding"></span>%</td>
+                <td class="table-final-grade">-</td>
+            </tr>
+        </table>
+
+        <div id="bottom-bar">
+            <span id="submitted"><strong>Un-submitted assignments: </strong> <span id="submitted-assignments">0</span>
+            <span><button class="btn" id="btn-calc" onclick="calculateAvg()">Calculate Final Grades</button></span></span>
+        </div>
+
+        <div id="csv-container">
+            <textarea placeholder="CSV Output Box" cols="90" rows="11" id="csv-box"></textarea>
+            <div id="button-container">
+                <button class="btn" id="csv-button" onclick="fillCSV()">Generate CSV</button>
+            </div>
+        </div>
+
+
+    </body>
+</html>

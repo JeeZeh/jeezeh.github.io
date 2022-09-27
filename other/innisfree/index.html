@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="no-js"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="main.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="main.js"></script>
+
+    </head>
+    <body>
+        <div class="hidden" id="dimmer">Click anywhere to close the popup</div>
+        <div id="container">
+
+
+            <div id="intro">
+                <br><span style="font-size: 2em;"><b>Innisfree</b><br><br></span>    
+                
+                <div id="start-button">
+                    Start<br><br>
+                </div>
+                <div id="credits">
+                    <span style="font-size: 1.2em;"><br><br>An interactive, non-linear representation of The Lake Isle of Innisfree by W.B. Yeats, read by Yeats himself.</span>
+                    <br><br><br>Clicking elements of the scene will open a popup window. 
+                    <br>Clicking the QR code or link in the popup will open a new tab to the content. 
+                    <br>To return, simply close the tab or switch back to the poem's tab.
+					<br>To restart, click the restart button below.
+                    <br><br>Created as a media convergence project by <br><b><a href="mailto:aaron.ashmore.2017@mumail.ie">Jesse Ashmore</a></b> (Front-end Dev)<br><b><a href="mailto:aleysha.mathieoconnor.2017@mumail.ie">Aleysha O'Connor</a></b> (Visual Assets)<br><b><a href="mailto:jonnie.white.2017@mumail.ie">Jonnie White</a></b> (Research &amp; Testing)
+                    <br><br><a href="https://www.youtube.com/watch?v=hGoaQ433wnw" target="_blank">Audio from a reading of the poem by W.B. Yeats.</a>
+                </div>
+            </div>
+
+            <div id="pavements">
+                <img class="fixed-width" src="img/yeats.jpg">
+            </div>
+
+            <div id="heart">
+                <img class="fixed-width" src="img/heart.png">
+            </div>
+
+
+            <div class="hidden" id="popup">
+                <div id="line-container">
+                    <div id="popup-line"></div>
+                    <div id="popup-desc"></div>
+                </div>
+                <div id="qr-container">
+                    <div id="popup-qr-title">Scan or click</div>
+                    <div id="popup-qr"><a id="popup-qr-link" target="_blank"></a></div>
+                    <div id="popup-qr-text"></div>
+                </div>
+            </div>
+            
+            
+            <div id="bg">
+                <img class="fixed-width" src="img/innisfree.jpg">
+            </div>
+            
+            <div id="bees">
+                <img class="fixed-width clickable" onclick="" src="img/beehives.png">
+            </div>
+            
+            <div id="linnets">
+                <img class="fixed-width clickable" onclick="" src="img/linnets.png">
+            </div>
+            
+            <div id="hut">
+                <img class="fixed-width clickable" onclick="" src="img/hut.png">
+            </div>
+            
+            <div id="dew">
+                <img class="fixed-width clickable" onclick="" src="img/dew.png">
+            </div>
+            
+            <div id="beanrows">
+                <img class="fixed-width" onclick="" src="img/beanrows.png">
+            </div>
+            
+            <div id="sun">
+                <img class="fixed-width" onclick="" src="img/sun.png">
+            </div>
+            
+            <div id="water">
+                <img class="fixed-width" onclick="" src="img/water-removable2.png">
+            </div>
+            
+            <div id="water-effects">
+                <img class="fixed-width clickable" onclick="" src="img/water-effects.png">
+            </div>
+
+        </div>
+        <div class="hidden" id="refresh"><button onclick="location.reload();">Restart</button></div>
+    </body>
+</html>

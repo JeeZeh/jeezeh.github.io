@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+
+<title>Moon Symbol</title>
+            <defs>
+                <style type="text/css">
+                    #crescent {
+                        fill: none;
+                        stroke: #666;
+                        stroke-width: 3;
+                        stroke-linejoin: round;
+                    }
+                </style>
+            </defs>
+            <path id="crescent" d="
+             M 12.5,3.5 
+             a 22.5,22.5 0 0,1 0,43 
+             a 22.5,22.5 0 1,0 0,-43 z" />

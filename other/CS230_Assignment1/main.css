@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body {
+    color: #222;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    line-height: 1.4;
+    background-color: #ededed;
+}
+
+table{
+    margin: 25px auto auto;
+}
+
+td{
+    border-radius: 5px 5px;
+    padding: 6px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.table-rows0{
+        background-color: #fefefe;
+}
+
+.table-rows1{
+    background-color: #f9f9f9;
+
+}
+
+.table-headings{
+    text-align: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.percent-padding{
+    padding: 5%;
+}
+
+.table-container {
+    border-spacing: .5em;
+}
+
+.table-result{
+    text-align: right;
+    padding-right: 1%;
+}
+
+.table-final-grade{
+    text-align: right;
+    border-radius: 5px 5px;
+    padding-right: 1%;
+}
+
+.col1{
+    width: 30%;
+}
+
+.col3, .col4, .col5, .col6, .col7, .col8{
+    width: 10%;
+    padding: 5px;
+}
+
+.btn{
+    display: block;
+    margin: 5% auto auto;
+    outline: none;
+    border: 0 solid;
+    border-radius: 8px 8px;
+    background-color: #548fed;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 10px;
+    color: white;
+    transition: .15s ease-in-out;
+}
+
+.btn:hover{
+    background-color: #89AFDB;
+    outline: none;
+    border: 0px solid;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.05);
+    transition: .15s ease-in-out;
+}
+
+.entry{
+    padding-right: 5%;
+}
+
+.entry{
+    text-align: right;
+    border: 1px solid #dddcde;
+    border-radius: 5px 5px;
+    padding: 3%;
+    transition: background-color .1s ease-in-out;
+    display: inline;
+}
+
+.entry:hover{
+    background-color: #f2f2f2;
+    transition: background-color .1s ease-in-out;
+}
+
+.entry:active,
+.entry:focus{
+    border: 2px solid #bcc4f4;
+    border-radius: 5px 5px;
+    padding: 2% 3% 2% 3%;
+    outline:none;
+}
+
+.entry:empty::before {
+    content: attr(placeholder);
+    color: rgba(30, 30, 30, 0.5);
+}
+
+#top-bar{
+    font-family: "Roboto Condensed", sans-serif;
+    display: block;
+    margin: auto;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    color: #505050;
+    width: 200px;
+    transition: .15s ease-in-out;
+}
+
+#title-text{
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    margin-top: -10px;
+}
+
+#author-text{
+    text-align: center;
+    font-size: 90%;
+}
+
+#btn-calc{
+    margin-top: 10px;
+}
+#bottom-bar{
+    margin: 10px  auto;
+    text-align: center;
+}
+
+#submitted{
+    display: inline-block;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+#csv-container{
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+#csv-button {
+    margin-top: 1%;
+}
+
+#csv-box {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #cccccc;
+    border-radius: 10px 10px;
+    padding: 5px;
+    font-family: "Courier New", serif ;
+    font-size: .7em;
+    line-height: 1.5em;
+    background-color: #252525;
+    color: #f4f4f4;
+}

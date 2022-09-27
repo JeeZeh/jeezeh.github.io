@@ -3,6 +3,7 @@
 </script>
 
 <script lang="ts">
+	import Accordion from '../components/Accordion.svelte';
 	import ReactRail from '../components/reactrail/reactrail.svelte';
 </script>
 
@@ -33,37 +34,47 @@
 
 	<hr />
 
-	<ReactRail />
-
-	<hr />
-
 	<div class="project-container">
-		<div class="project">
-			<img src="reactrail.png" alt="React Rail logo" class="img-left" />
-			<div class="description">
-				<h2>React Rail</h2>
-				<p>A modern Irish Rail timetable PWA designed for mobile and desktop</p>
+		<Accordion>
+			<div class="project" slot="head">
+				<img src="reactrail.png" alt="React Rail logo" class="img-left" />
+				<div class="description">
+					<h2>React Rail</h2>
+					<p>A modern Irish Rail timetable PWA designed for mobile and desktop</p>
+				</div>
 			</div>
-		</div>
-
-		<div class="project">
-			<img src="steamshortcut.png" alt="Steam Shortcut Generator logo" class="img-left" />
-			<div class="description">
-				<h2>Steam Shortcut Generator</h2>
-				<p>A script to generate shortcuts with icons for all installed Steam library games</p>
+			<div slot="details">
+				<a href="https://reactrail.com/">Open</a>
+				<a href="Open">GitHub</a>
 			</div>
-		</div>
-
-		<div class="project">
-			<img src="autosub.png" alt="YouTube Playlist Autosub Explorer logo" class="img-left" />
-			<div class="description">
-				<h2>YouTube Playlist Autosub Explorer</h2>
-				<p>
-					An app that can be used to archive and fuzzy search an entire YouTube playlist for words,
-					phrases, and sentences.
-				</p>
+		</Accordion>
+		<Accordion>
+			<div class="project" slot="head">
+				<img src="steamshortcut.png" alt="Steam Shortcut Generator logo" class="img-left" />
+				<div class="description">
+					<h2>Steam Shortcut Generator</h2>
+					<p>A script to generate shortcuts with icons for all installed Steam library games</p>
+				</div>
 			</div>
-		</div>
+			<div slot="details">
+				<a href="https://github.com/JeeZeh/steam-shortcut-generator ">GitHub</a>
+			</div>
+		</Accordion>
+		<Accordion>
+			<div class="project" slot="head">
+				<img src="autosub.png" alt="YouTube Playlist Autosub Explorer logo" class="img-left" />
+				<div class="description">
+					<h2>YouTube Playlist Autosub Explorer</h2>
+					<p>
+						An app that can be used to archive and fuzzy search an entire YouTube playlist for
+						words, phrases, and sentences.
+					</p>
+				</div>
+			</div>
+			<div slot="details">
+				<a href="https://github.com/JeeZeh/youtube-playlist-autosub-explorer">GitHub</a>
+			</div>
+		</Accordion>
 	</div>
 </section>
 
@@ -101,7 +112,7 @@
 	}
 
 	.project-container .project {
-		margin-bottom: 4rem;
+		margin-bottom: 2rem;
 	}
 
 	.project {

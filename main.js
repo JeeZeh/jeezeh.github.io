@@ -1,8 +1,6 @@
 let typeText = "";
 if (window.innerWidth <= 800)
-  typeText = "Web Developer | Programmer<br>Graphics\xa0Designer\xa0| Musician";
-else
-  typeText = "Web Developer | Programmer | Graphics\xa0Designer\xa0| Musician";
+  typeText = "Professional Software Engineer; amateur many things.";
 let typeIterator = 0;
 
 window.onload = function () {
@@ -67,7 +65,7 @@ function switchTabs(target) {
 }
 
 function toggleDark() {
-  document.querySelector('body').classList.toggle('dark');
+  document.querySelector("body").classList.toggle("dark");
 }
 
 /* --- Beep Boop --- */

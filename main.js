@@ -1,6 +1,4 @@
-let typeText = "";
-if (window.innerWidth <= 800)
-  typeText = "Professional Software Engineer; amateur many things.";
+let typeText = "Professional Software Engineer; amateur many things.";
 let typeIterator = 0;
 
 window.onload = function () {

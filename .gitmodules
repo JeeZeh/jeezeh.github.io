@@ -1,0 +1,9 @@
+[submodule "ssg/themes/duckquill"]
+	path = ssg/themes/duckquill
+	url = https://codeberg.org/daudix/duckquill.git
+[submodule "ssg/themes/zola-bearblog"]
+	path = ssg/themes/zola-bearblog
+	url = https://codeberg.org/alanpearce/zola-bearblog
+[submodule "ssg/themes/apollo"]
+	path = ssg/themes/apollo
+	url = https://github.com/not-matthias/apollo

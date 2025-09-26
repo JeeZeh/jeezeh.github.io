@@ -8,16 +8,20 @@ template = "index.html"
 
 ## Photography
 
-Scenes and shots from travels and daily motions published on my [dedicated portfolio](https://photos.jesse.ie)
+[Snaps and shots](ttps://photos.jesse.ie) from travels and daily motions published on my dedicated portfolio
 
-## Technical
+## Technical projects
 
-Musings and deep-dives into various technical projects posted [on this site](./projects)
+[Musings and deep-dives](@/projects/_index.md) into various technical projects
 
 ## Music
 
-Songs and snippets as a hobby noise-maker shared on [SoundCloud](http://soundcloud.com/JeeZeh)
+[Songs and snippets](http://soundcloud.com/JeeZeh) as a hobbyist noise-maker
 
-## Professional
+## Video content
 
-Career and educational milestones tracked on [LinkedIn](https://www.linkedin.com/in/jesse-ashmore-2597b5130)
+[Tutorials, video game montages, and nonsensical memes](http://youtube.com/c/JeeZeh) from my years as a video editor and content creator (?)
+
+## Professional and education
+
+[Experience and milestones](https://www.linkedin.com/in/jesse-ashmore-2597b5130) in my career and time in education

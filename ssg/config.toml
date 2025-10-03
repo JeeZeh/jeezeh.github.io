@@ -19,10 +19,10 @@ highlight_code = true
 external_links_target_blank = true
 
 [extra]
-accent_color = "#ff0051ff"
+accent_color = "#bb6680ff"
 # Ditto but for the dark theme.
 # If not set regular variant will be used.
-accent_color_dark = "#ff99b9ff"
+accent_color_dark = "#d4a0b2ff"
 
 [extra.nav]
 show_theme_switcher = true

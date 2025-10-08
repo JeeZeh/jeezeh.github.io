@@ -8,7 +8,7 @@ template = "index.html"
 
 ## Photography
 
-[Snaps and shots](ttps://photos.jesse.ie) from travels and daily motions published on my dedicated portfolio
+[Snaps and shots](https://photos.jesse.ie) from travels and daily motions published on my dedicated portfolio
 
 ## Technical projects
 

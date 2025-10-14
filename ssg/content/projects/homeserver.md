@@ -11,76 +11,72 @@ This is living documentation of my home network setup. The diagram below serves 
 
 {% mermaiddiagram() %}
 graph TB
-subgraph Internet
 ISP[Virgin Media ISP]
-CF[Cloudflare]
-PLAYIT[PlayIt.gg Service]
-end
+CFDNS[Cloudflare DNS-over-HTTPS]:::external
+PLAYIT[PlayIt.gg Service]:::external
 
-    subgraph "Home Network"
-        ROUTER[Asus AX-6000 Router<br/>Asus Merlin Firmware<br/>192.168.8.0/24]
-        PIHOLE[Pi-Hole DNS<br/>Cloudflare DoH]
+    ROUTER[Router]
+    PIHOLE[Pi-Hole]:::docker
+    SERVER[Home Server]
+    PS3[PS3 Network Server]:::docker
+    HUE[Hue Analytics]:::bareMetal
+    MC[Minecraft Server]:::docker
+    IMMICH[Immich]:::docker
+    AUDIOBOX[Audiobox]:::docker
 
-        subgraph "Primary Server"
-            subgraph "Bare Metal Services"
-                PS3[PS3 Network Server<br/>#personal-project]
-                HUE[Hue Analytics<br/>#personal-project #aws<br/>Rust/Django]
-                MC[Minecraft Server<br/>itzg/minecraft-server<br/>Backups: itzg/mc-backup]
-            end
+    REACTRAIL[React Rail]:::docker
+    TAILSCALE[Tailscale]:::docker
+    CFTUNNEL[Cloudflare Tunnel]:::external
 
-            subgraph "Docker Services"
-                IMMICH[Immich<br/>Photo Management<br/>ghcr.io/immich-app]
-                REACTRAIL[React Rail<br/>#docker #react<br/>#personal-project]
-                AUDIOBOX[Audiobox - Lidarr<br/>ghcr.io/linuxserver]
-            end
-        end
+    TRAINS[trains.jesse.ie]:::public
+    REACTRAIL_DOMAIN[reactrail.ie]:::public
+    IMMICH_DOMAIN[immich.jesse.ie]:::public
+    PLAYIT_ENDPOINT[PlayIt.gg Endpoint]:::public
+    IMMICH_APP[Immich App]:::public
 
-        subgraph "Network Services"
-            TAILSCALE[Tailscale Endpoint<br/>102.10d.0.x addresses]
-            CFTUNNEL[Cloudflare Tunnel<br/>cloudflared]
-        end
-    end
-
-    subgraph "Public Access"
-        JESSE[jesse.ie]
-        REACTRAIL_DOMAIN[reactrail.ie]
-        PLAYIT_ENDPOINT[PlayIt.gg Endpoint<br/>Minecraft Access]
-    end
-
-    subgraph "Clients"
-        BROWSERS[Web Browsers]
-        IMMICH_APP[Immich Mobile App]
-        MC_CLIENT[Minecraft Client]
-    end
+    MC_CLIENT[Minecraft Client]:::public
+    TS_CLIENTS[Tailscale Clients]:::public
 
     ISP --> ROUTER
-    ROUTER --> PIHOLE
-    PIHOLE -.DNS/DoH.-> CF
-    ROUTER --> PS3
-    ROUTER --> HUE
-    ROUTER --> MC
-    ROUTER --> IMMICH
-    ROUTER --> REACTRAIL
-    ROUTER --> AUDIOBOX
+    ROUTER --> SERVER
+    ROUTER -->|DHCP| PIHOLE
+    PIHOLE -.DNS/DoH.-> CFDNS
 
-    ROUTER --> TAILSCALE
-    TAILSCALE -.Remote Access.-> ROUTER
+    TAILSCALE -->|advertises 192.168.0.0/16| ROUTER
 
-    ROUTER --> CFTUNNEL
-    CFTUNNEL --> CF
-    CF --> JESSE
-    CF --> REACTRAIL_DOMAIN
+    PS3 -->|runs on| SERVER
+    HUE -->|runs on| SERVER
+    AUDIOBOX -->|runs on| SERVER
 
-    MC -.CG-NAT Workaround.-> PLAYIT
-    PLAYIT --> PLAYIT_ENDPOINT
+    TAILSCALE -->|runs on| SERVER
+    CFTUNNEL -->|runs on| SERVER
+    REACTRAIL -->|runs on| SERVER
+    IMMICH -->|runs on| SERVER
+    MC -->|runs on| SERVER
+    PLAYIT -->|runs on| SERVER
 
-    JESSE --> BROWSERS
-    REACTRAIL_DOMAIN --> BROWSERS
-    IMMICH -.via Cloudflare.-> IMMICH_APP
-    PLAYIT_ENDPOINT --> MC_CLIENT
+    TRAINS -.resolves.-> CFTUNNEL
+    REACTRAIL_DOMAIN -.resolves.-> CFTUNNEL
+    CFTUNNEL -->|exposes| REACTRAIL
+
+    IMMICH_DOMAIN -.resolves.-> CFTUNNEL
+    CFTUNNEL -->|exposes| IMMICH
+
+    PLAYIT -->|exposes| MC
+
+    PLAYIT_ENDPOINT --> PLAYIT
+    TS_CLIENTS --> TAILSCALE
+    IMMICH_APP --> IMMICH_DOMAIN
+    MC_CLIENT -->|connects| PLAYIT_ENDPOINT
+
+    classDef docker fill:#3b82f6,stroke:#1e40af,color:#fff
+    classDef bareMetal fill:#6b7280,stroke:#374151,color:#fff
+    classDef network fill:#a78bfa,stroke:#7c3aed,color:#fff
+    classDef public fill:#10b981,stroke:#059669,color:#fff
+    classDef external fill:#f97316,stroke:#ea580c,color:#fff
 
     click ROUTER "#router"
-    click PIHOLE "#dns-configuration"
+    click PIHOLE "#pi-hole"
     click PS3 "#ps3-network-server"
     click HUE "#hue-analytics"
     click MC "#minecraft-server"
@@ -99,6 +95,7 @@ end
 **Model:** Asus AX-6000 (running Asus Merlin firmware)
 
 Acts as the primary router with several key functions:
+
 - **Network:** 192.168.8.0/24
 - **Virgin Media routes:** Configured to handle Virgin Media ISP connectivity
 - The AX-6000 doesn't support 802.1ad (QinQ) mode natively, but works well enough for the current setup
@@ -176,15 +173,16 @@ Used to expose services to the public internet behind Cloudflare. This allows me
 ### Public Access
 
 #### jesse.ie
-*Coming soon*
+
+_Coming soon_
 
 #### reactrail.ie
-*Coming soon*
+
+_Coming soon_
 
 #### PlayIt.gg Endpoint
 
 Used to work around CG-NAT (Carrier-Grade NAT) limitations for the Minecraft server. PlayIt.gg provides TCPUDP support, creating a publicly accessible endpoint that tunnels traffic to the Minecraft server running on my local network.
-
 
 ---
 
@@ -247,4 +245,3 @@ Used to work around CG-NAT (Carrier-Grade NAT) limitations for the Minecraft ser
 - [ ] Keep diagram updated as network changes
 - [ ] Add new services/devices as they're deployed
 - [ ] Expand blog content with code snippets and configs
-

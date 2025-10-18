@@ -94,11 +94,17 @@ PLAYIT[PlayIt.gg Service]:::external
 
 **Model:** Asus AX-6000 (running Asus Merlin firmware)
 
-Acts as the primary router with several key functions:
+Acts as the primary router, though exists behind my Virgin Media Hub 5x (ISP router/modem).
 
-- **Network:** 192.168.8.0/24
-- **Virgin Media routes:** Configured to handle Virgin Media ISP connectivity
-- The AX-6000 doesn't support 802.1ad (QinQ) mode natively, but works well enough for the current setup
+#### Why the extra router?
+
+In Ireland, most 1Gb+ fiber broadband providers use an ONT (Optical Network Terminator) in the premises to terminate the fibre connection to something more general like an ethernet cable. Although ISP provide their own router to connect to the ONT, the ethernet connection means that you are free to use whichever router you like with these providers. **Unfortunately, Virgin Media is not one of them.**
+
+Virgin Media Ireland provide a router/modem (Hub 5x) that accepts the fiber connection (XGS-PON) directly, and is also responsible for the handshake over the fibre network — this is usually the job of the ONT in 'regular' setups. Providing a router/modem combo is not unusual for Virgin Media, who previously included a DOCSIS modem in their cable-based home routers (Super Hub), and typically is not an issue for users who wish to use their own routers instead; their DOCSIS router/modems all included a "modem mode" allowing you to disable all router functionality and pass the modem's output to a dedicated router you provide.
+
+In their wisdom, **VM does not provide a modem mode on the Hub 5x in Ireland**. Although controls seem to exist in the router itself, sending requests to the device's admin API does nothing. So, for the time being, I've disabled as much as I can on the 5x (Wi-Fi, DHCP, Firewall, etc.) and enabled DMZ for the Asus router behind it.
+
+The Asus Router handles all clients on the network, though defers to the Pi-Hole instance (docker) running on the home server for DHCP and DNS.
 
 ### Pi-Hole
 
@@ -196,11 +202,11 @@ Used to work around CG-NAT (Carrier-Grade NAT) limitations for the Minecraft ser
   - [x] Include DHCP and DNS/DoH connections to Cloudflare
   - [x] List connected devices
   - [x] Add click events linking to sections
-- [ ] Integrate Mermaid into Zola
-  - [ ] Add mermaid.js to base template or create shortcode
-  - [ ] Add CSS for max-width constraint (`.mermaid { max-width: 800px; margin: 0 auto; }`)
-  - [ ] Test rendering in local dev environment
-  - [ ] Test mobile responsiveness
+- [x] Integrate Mermaid into Zola
+  - [x] Add mermaid.js to base template or create shortcode
+  - [x] Add CSS for max-width constraint (`.mermaid { max-width: 800px; margin: 0 auto; }`)
+  - [x] Test rendering in local dev environment
+  - [x] Test mobile responsiveness
 - [ ] Write initial content
   - [ ] Document router setup
   - [ ] Document server setup (bare metal services)

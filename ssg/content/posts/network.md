@@ -51,7 +51,7 @@ In Ireland, most 1Gb+ fiber broadband providers install an <abbr title="Optical 
 
 Unfortunately, Virgin Media Ireland decided that it's more economical to _not_ install an ONT in your home—which would technically work for any other provider of broadband in the country—but instead provide a router that accepts the fiber connection directly. This capable little router is _also a <abbr title="10-Gigabit-capable (symmetric) passive optical network">XGS-PON</abbr> modem_ ([not to be foolishly confused with XG-PON](https://web.archive.org/web/20230907074628/https://www.nokia.com/blog/xg-pon-or-xgs-pon-dont-make-costly-spelling-mistake/)).
 
-Providing a router/modem combo is not unusual for Virgin Media—their coax-based home routers (_"Super Hub"_) also include a DOCSIS modem—however, the Hub 5x differs in one crucial way: **it does not include a dedicated modem mode**.
+Providing a router/modem combo is not unusual for Virgin Media—their coax-based home routers (_"Super Hub"_) also include a DOCSIS modem—however, the Hub 5x differs in one crucial way: **it does not include a dedicated modem mode**. This means it's _always_ operating both as a modem and a router, adding an extra hop between me and the outside world, and making things like NAT more complicated.
 
 Although controls seem to exist in the router itself, the option is explicitly hidden for my device version (`mv3`, apparently):
 
@@ -61,7 +61,7 @@ if (globalSettings.deviceGeneration == "mv3") {
 }
 ```
 
-Exposing the settings panel by removing the previous `.remove()` statement is promising, but sadly returns a `403` with a divine `"Bridge mode is forbidden!"` message if you try to apply the settings.
+Exposing the settings panel by removing the previous `.remove()` statement is promising, but sadly returns a `403` with a divine `"Bridge mode is forbidden!"` error message if you try to apply the settings.
 
 ![Virgin Media's router settings page showing an exposed "modem mode" panel that returns an error on trying to enable it](modem-mode.png#no-hover)
 
@@ -75,9 +75,7 @@ A bigger concern than advertisers, though, is my ISP. While I can't hide everyth
 
 ### DNS filtering with Pi-hole
 
-[Pi-hole](https://pi-hole.net/) is the de-facto standard in DNS filtering (e.g., ad/tracking blocking). Its efficacy in actually blocking tracking is [debated](https://www.reddit.com/r/raspberry_pi/comments/111gkih/are_piholes_still_relevant/), and while it can't block paywalls or YouTube ads, it still provides at least a baseline level of filtering.
-
-I run [Pi-hole via Docker](https://docs.pi-hole.net/docker/) on my home server.
+[Pi-hole](https://pi-hole.net/) is the de-facto standard in DNS filtering (e.g., ad/tracking blocking). It maintains a large list of blocking rules which are applied every time a device makes a request for a given domain. If that domain, e.g. `tracking.corp.net`, is in the blocklist, the domain isn't resolved. Although it can't block paywalls or YouTube ads, it still provides at least a baseline level of filtering. I run [Pi-hole via Docker](https://docs.pi-hole.net/docker/) on my home server.
 
 <details>
 <summary>I also use the Pi-hole for DHCP.</summary>
@@ -88,7 +86,7 @@ I'm still undecided on this in the long-term, but I haven't found it limiting fo
 
 </details>
 
-**Maybe more valuable than blocking by-default, it gives visibility into what is happening on my network**; I sleep easier at night knowing I can review exactly what (and how often) devices on my network are reaching out to, and that I'm empowered to block that if I like.
+**Maybe more valuable than blocking by-default, it gives visibility into what is happening on my network**; I sleep easier at night knowing I can review exactly where (and how often) devices on my network are reaching out, and that I'm empowered to block that if I like.
 
 However, I noticed that sometimes, my requests weren't being filtered as expected...
 
@@ -110,7 +108,7 @@ Unfortunately, being a relatively new web technology, adoption is good but not g
 
 Rather than trying to configure each device to use DoH individually, we can **proxy local DNS requests to a DoH endpoint**. Since I'm already running Pi-hole on my home server as a DNS server for clients, I just need to configure it to point to Cloudflare's DoH endpoint (my choice for DNS provider).
 
-This is well-documented by [Pi-hole already](https://docs.pi-hole.net/guides/dns/cloudflared/), but my setup differs in that **I prioritize a Docker for services whenever available**. Luckily, someone already [dockerized the Cloudflared proxy service](https://github.com/crazy-max/docker-cloudflared) (thanks [@crazy-max](https://github.com/crazy-max)!):
+This is well-documented by [Pi-hole already](https://docs.pi-hole.net/guides/dns/cloudflared/), but my setup differs in that **I prioritize running services via Docker whenever available**. Luckily, someone already [dockerized the Cloudflared proxy service](https://github.com/crazy-max/docker-cloudflared) (thanks [@crazy-max](https://github.com/crazy-max)!):
 
 ```yaml
 services:

@@ -15,7 +15,16 @@
 //     top: 0.08em;
 // }
 
-// div.mermaid {
-//   max-width: 300px;
-//   margin: 0 auto;
-// }
+.mermaid {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.full-bleed {
+    margin-inline-start: calc((-90vw + 100%) / 2);
+    margin-inline-end: calc((-90vw + 100%) / 2);
+    width: 90vw;
+    max-width: 90vw;
+  }
+}

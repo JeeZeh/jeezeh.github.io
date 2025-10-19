@@ -47,7 +47,7 @@ Importantly, **using my own router means that I can move my network to a new hom
 
 In Ireland, most 1Gb+ fiber broadband providers install an <abbr title="Optical Network Terminator">ONT</abbr> in the premises to terminate the fibre connection to an ethernet cable; this means that you are free to use whichever router you like with these providers.
 
-{{mermaiddiagram(file_path="content/projects/diagrams/home-server/virgin-media.mmd")}}
+{{mermaiddiagram(file_path="diagrams/home-server/virgin-media.mmd")}}
 
 Unfortunately, Virgin Media Ireland decided that it's more economical to _not_ install an ONT in your home—which would technically work for any other provider of broadband in the country—but instead provide a router that accepts the fiber connection directly. This capable little router is _also a <abbr title="10-Gigabit-capable (symmetric) passive optical network">XGS-PON</abbr> modem_ ([not to be foolishly confused with XG-PON](https://web.archive.org/web/20230907074628/https://www.nokia.com/blog/xg-pon-or-xgs-pon-dont-make-costly-spelling-mistake/)).
 

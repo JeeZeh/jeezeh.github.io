@@ -12,7 +12,7 @@ template = "index.html"
 
 ## Technical projects
 
-[Musings and deep-dives](@/projects/_index.md) into various technical projects
+[Musings and deep-dives](@/posts/_index.md) into various technical projects
 
 ## Music
 

@@ -9,8 +9,18 @@ external_links_target_blank = true
 
 This is living documentation of my home network setup. The diagram below serves as both a visual reference and a table of contents—click on nodes to jump to detailed sections.
 
-{% mermaiddiagram() %}
-graph TB
+## {% mermaiddiagram(full_bleed=true) %}
+
+---
+
+config:
+layout: elk
+look: classic
+theme: light
+
+---
+
+flowchart TB
 ISP[Virgin Media ISP]
 CFDNS[Cloudflare DNS-over-HTTPS]:::external
 PLAYIT[PlayIt.gg Service]:::external
@@ -90,21 +100,66 @@ PLAYIT[PlayIt.gg Service]:::external
 
 ## Network Components
 
-### Router
+### Routers
 
-**Model:** Asus AX-6000 (running Asus Merlin firmware)
+**Primary**: Asus AX-6000 (running Asus Merlin firmware)
+**ISP**: Virgin Media Fiber Hub (5x)
 
-Acts as the primary router, though exists behind my Virgin Media Hub 5x (ISP router/modem).
+The Asus is the primary router and serves all clients at home, though defers to the Pi-Hole for DHCP and DNS. More on this [later](#pi-hole).
 
-#### Why the extra router?
+> So, why the extra router?
 
-In Ireland, most 1Gb+ fiber broadband providers use an ONT (Optical Network Terminator) in the premises to terminate the fibre connection to something more general like an ethernet cable. Although ISP provide their own router to connect to the ONT, the ethernet connection means that you are free to use whichever router you like with these providers. **Unfortunately, Virgin Media is not one of them.**
+**If you mean the Asus one:** I like being able to control things like DNS, splitting networks by wireless bands, and other fun settings that most ISPs don't allow. And importantly, **using my own router means that I can move my network to a new home or ISP without needing to re-configure anything.**
 
-Virgin Media Ireland provide a router/modem (Hub 5x) that accepts the fiber connection (XGS-PON) directly, and is also responsible for the handshake over the fibre network — this is usually the job of the ONT in 'regular' setups. Providing a router/modem combo is not unusual for Virgin Media, who previously included a DOCSIS modem in their cable-based home routers (Super Hub), and typically is not an issue for users who wish to use their own routers instead; their DOCSIS router/modems all included a "modem mode" allowing you to disable all router functionality and pass the modem's output to a dedicated router you provide.
+**If you mean the ISP one, well...**
 
-In their wisdom, **VM does not provide a modem mode on the Hub 5x in Ireland**. Although controls seem to exist in the router itself, sending requests to the device's admin API does nothing. So, for the time being, I've disabled as much as I can on the 5x (Wi-Fi, DHCP, Firewall, etc.) and enabled DMZ for the Asus router behind it.
+In Ireland, most 1Gb+ fiber broadband providers install an <abbr title="Optical Network Terminator">ONT</abbr> in the premises to terminate the fibre connection to an ethernet cable; this means that you are free to use whichever router you like with these providers.
 
-The Asus Router handles all clients on the network, though defers to the Pi-Hole instance (docker) running on the home server for DHCP and DNS.
+## {% mermaiddiagram() %}
+
+---
+
+config:
+layout: elk
+look: classic
+theme: light
+
+---
+
+graph TB
+ISP[Virgin Media ISP]
+
+subgraph House
+TP[Termination Point]
+ONT[Optical Network Terminal]
+Router[Router]
+Outlets[[sockets]]
+end
+
+ISP -->|FTTP| TP
+TP -->|fiber cable| ONT
+Outlets -->|power|Router
+Outlets -->|power|ONT
+
+{% end %}
+
+Unfortunately, Virgin Media Ireland decided that it's more economical (but probably more wasteful) to _not_ install an ONT in your home—which would technically work for any other provider of broadband in the country—but instead provide a router that accepts the fiber connection directly. This capable little router (the _"Hub 5x"_) is _also a modem_, by way of its on-board <abbr title="10-Gigabit-capable (symmetric) passive optical network">XGS-PON</abbr> terminal ([not to be foolishly confused with XG-PON](https://web.archive.org/web/20230907074628/https://www.nokia.com/blog/xg-pon-or-xgs-pon-dont-make-costly-spelling-mistake/)).
+
+Providing a router/modem combo is not unusual for Virgin Media—their coax-based home routers (_"Super Hub"_) also include a DOCSIS modem—however, their Hub5x differs in one crucial way: **it does not include a dedicated modem mode**.
+
+Although controls seem to exist in the router itself, the option is explicitly hidden for my device version (`mv3`, apparently):
+
+```js
+if (globalSettings.deviceGeneration == "mv3") {
+  $('ul.side-menu li:has(a[data-content$="modemmode"])').remove();
+}
+```
+
+Exposing the settings panel by removing the previous `.remove()` statement is promising, but sadly returns a `403` with a divine `"Bridge mode is forbidden!"` message if you try to apply the settings.
+
+![alt text](modem-mode.png#no-hover)
+
+So, for the time being, I've disabled as much as I can on the 5x (Wi-Fi, DHCP, Firewall, etc.) and enabled DMZ for the Asus router behind it.
 
 ### Pi-Hole
 

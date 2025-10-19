@@ -30,7 +30,7 @@ accent_color_dark = "#d4a0b2ff"
 show_theme_switcher = true
 
 links = [
-    { url = "@/projects/_index.md", name = "Projects" },
+    { url = "@/projects/_index.md", name = "Posts" },
     { url = "@/about/index.md", name = "About" },
     { url = "https://ko-fi.com/jesseash", name = "Coffee" },
 ]

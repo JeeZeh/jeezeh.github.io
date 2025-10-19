@@ -1,0 +1,18 @@
+---
+config:
+  layout: elk
+---
+graph LR
+  ISP("Virgin Media (ISP)")
+
+subgraph House
+  TP(Termination Point)
+  ONT(ONT)
+  Router[Router]
+  %% Outlets[[sockets]]
+end
+
+ONT -->|ethernet cable| Router
+ISP -->|FTTP| TP
+TP -->|fiber cable| ONT
+%% Outlets -->|power|Router & ONT

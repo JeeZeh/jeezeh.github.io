@@ -1,0 +1,81 @@
+---
+config:
+  layout: elk
+  look: classic
+  theme: light
+---
+flowchart TB
+    ISP[Virgin Media ISP]
+    CFDNS[Cloudflare DNS-over-HTTPS]:::external
+    PLAYIT[PlayIt.gg Service]:::external
+
+    ROUTER[Router]
+    PIHOLE[Pi-Hole]:::docker
+    SERVER[Home Server]
+    PS3[PS3 Network Server]:::docker
+    HUE[Hue Analytics]:::bareMetal
+    MC[Minecraft Server]:::docker
+    IMMICH[Immich]:::docker
+    AUDIOBOX[Audiobox]:::docker
+
+    REACTRAIL[React Rail]:::docker
+    TAILSCALE[Tailscale]:::docker
+    CFTUNNEL[Cloudflare Tunnel]:::external
+
+    TRAINS[trains.jesse.ie]:::public
+    REACTRAIL_DOMAIN[reactrail.ie]:::public
+    IMMICH_DOMAIN[immich.jesse.ie]:::public
+    PLAYIT_ENDPOINT[PlayIt.gg Endpoint]:::public
+    IMMICH_APP[Immich App]:::public
+
+    MC_CLIENT[Minecraft Client]:::public
+    TS_CLIENTS[Tailscale Clients]:::public
+
+    ISP --> ROUTER
+    ROUTER --> SERVER
+    ROUTER -->|DHCP| PIHOLE
+    PIHOLE -.DNS/DoH.-> CFDNS
+
+    TAILSCALE -->|advertises 192.168.0.0/16| ROUTER
+
+    PS3 -->|runs on| SERVER
+    HUE -->|runs on| SERVER
+    AUDIOBOX -->|runs on| SERVER
+
+    TAILSCALE -->|runs on| SERVER
+    CFTUNNEL -->|runs on| SERVER
+    REACTRAIL -->|runs on| SERVER
+    IMMICH -->|runs on| SERVER
+    MC -->|runs on| SERVER
+    PLAYIT -->|runs on| SERVER
+
+    TRAINS -.resolves.-> CFTUNNEL
+    REACTRAIL_DOMAIN -.resolves.-> CFTUNNEL
+    CFTUNNEL -->|exposes| REACTRAIL
+
+    IMMICH_DOMAIN -.resolves.-> CFTUNNEL
+    CFTUNNEL -->|exposes| IMMICH
+
+    PLAYIT -->|exposes| MC
+
+    PLAYIT_ENDPOINT --> PLAYIT
+    TS_CLIENTS --> TAILSCALE
+    IMMICH_APP --> IMMICH_DOMAIN
+    MC_CLIENT -->|connects| PLAYIT_ENDPOINT
+
+    classDef docker fill:#3b82f6
+    classDef bareMetal fill:#6b7280
+    classDef network fill:#a78bfa
+    classDef public fill:#10b981
+    classDef external fill:#f97316
+
+    click ROUTER "#router"
+    click PIHOLE "#pi-hole"
+    click PS3 "#ps3-network-server"
+    click HUE "#hue-analytics"
+    click MC "#minecraft-server"
+    click IMMICH "#immich"
+    click REACTRAIL "#react-rail"
+    click AUDIOBOX "#audiobox"
+    click TAILSCALE "#tailscale"
+    click CFTUNNEL "#cloudflare-tunnel"

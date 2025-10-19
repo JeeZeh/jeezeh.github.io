@@ -5,4 +5,4 @@ template="article_list.html"
 page_template = "article.html"
 +++
 
-All my projects :)
+This is a blog I suppose, there'll be more posts over time.

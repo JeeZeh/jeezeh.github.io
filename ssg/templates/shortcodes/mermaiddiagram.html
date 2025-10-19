@@ -1,4 +1,7 @@
 <!-- should be in templates/shortcodes/ -->
 <div class="mermaid {% if full_bleed %}full-bleed{% endif %}">
-{{ body }}
+{% if file_path %}
+    {% set file = load_data(path=file_path) -%}
+    {{ file }}
+{% endif %}
 </div>

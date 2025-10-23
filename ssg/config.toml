@@ -26,6 +26,8 @@ accent_color = "#bb6680ff"
 # If not set regular variant will be used.
 accent_color_dark = "#d4a0b2ff"
 
+card = "card.jpeg"
+
 [extra.nav]
 show_theme_switcher = true
 

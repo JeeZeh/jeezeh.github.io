@@ -1,0 +1,2 @@
+{%- set updated_on = macros_translate::translate(key="updated_on", default="Updated on $UPDATED", language_strings=language_strings) -%}
+{{- updated_on | replace(from="$UPDATED", to=page.updated | date(format=date_format, locale=date_locale)) -}}
